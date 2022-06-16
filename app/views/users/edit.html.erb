@@ -1,0 +1,29 @@
+<h1>Users info</h1>
+
+<% if @user.errors.any? %>
+  <%= @user.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @user do |f| %>
+
+  <h2>Name</h2>
+  <%= f.text_field :name %>
+  
+  <h2>Image</h2>
+  <%= f.file_field :profile_image,  accept: "image/*", placeholder: "ファイルを選択" %>  
+  
+  <h2>Introduction</h2>
+  <%= f.text_area :introduction %>
+  
+  <%= f.submit 'Update User' %>
+  
+<% end %>
+
+
+
+
